@@ -1,0 +1,13 @@
+body {
+    min-height: 100vh;
+	position: relative;
+    background: linear-gradient(to bottom, #000428, #004683);
+}
+.detail-card{
+	background: linear-gradient(315deg, #4dff03, #00d0ff);
+	box-shadow: 0 0 10px #00d0ff, 0 0 40px #00d0ff, 0 0 80px #00d0ff;
+	transition: 0.5s;
+}
+.detail-card:hover{
+transform: translate(0px,-10px);
+}
