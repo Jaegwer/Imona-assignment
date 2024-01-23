@@ -3,28 +3,29 @@ let currentPage = 1;
 let userData = [];
 
 const userListElement = document.getElementById("userList");
-const prevPageButton = document.getElementById('prevPageButton');
-const nextPageButton = document.getElementById('nextPageButton');
-const paginationElement = document.getElementById('pagination');
+const prevPageButton = document.getElementById("prevPageButton");
+const nextPageButton = document.getElementById("nextPageButton");
+const paginationElement = document.getElementById("pagination");
 
 function getUserList(page) {
   const url = `${userApiBaseUrl}?page=${page}`;
 
   fetch(url)
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       userData = data.data;
+      totalPages = data.total_pages;
       displayData();
       updatePageButtons();
       updatePagination();
     })
-    .catch(error => console.error(error));
+    .catch((error) => console.error(error));
 }
 
 function displayData() {
   userListElement.innerHTML = "";
 
-  userData.forEach(user => {
+  userData.forEach((user) => {
     const column = createCard(user);
     userListElement.appendChild(column);
   });
@@ -66,9 +67,11 @@ function createCard(user) {
 }
 
 function loadNextPage() {
-  currentPage++;
-  getUserList(currentPage);
-  updateURL();
+  if (currentPage < totalPages) {
+    currentPage++;
+    getUserList(currentPage);
+    updateURL();
+  }
 }
 
 function loadPrevPage() {
@@ -85,18 +88,18 @@ function updateURL() {
 
 function updatePageButtons() {
   prevPageButton.disabled = currentPage === 1;
-  nextPageButton.disabled = currentPage === 2;
+  nextPageButton.disabled = currentPage === totalPages;
 }
 
 function updatePagination() {
-  paginationElement.innerHTML = '';
+  paginationElement.innerHTML = "";
 
-  for (let i = 1; i <= 2; i++) {
-    const listItem = document.createElement('li');
-    listItem.className = `page-item ${i === currentPage ? 'active' : ''}`;
+  for (let i = 1; i <= totalPages; i++) {
+    const listItem = document.createElement("li");
+    listItem.className = `page-item ${i === currentPage ? "active" : ""}`;
 
-    const link = document.createElement('a');
-    link.className = 'page-link';
+    const link = document.createElement("a");
+    link.className = "page-link";
     link.href = `?page=${i}`;
     link.textContent = i;
 
@@ -109,20 +112,20 @@ function fetchUserDetails(userId) {
   const userDetailsUrl = `${userApiBaseUrl}/${userId}`;
 
   fetch(userDetailsUrl)
-    .then(response => response.json())
-    .then(userData => {
+    .then((response) => response.json())
+    .then((userData) => {
       window.location.href = `user-details.html?id=${userId}`;
     })
-    .catch(error => console.error(error));
+    .catch((error) => console.error(error));
 }
 
 const urlParams = new URLSearchParams(window.location.search);
-const initialPage = parseInt(urlParams.get('page')) || 1;
+const initialPage = parseInt(urlParams.get("page")) || 1;
 currentPage = initialPage;
 
 getUserList(currentPage);
 
 if (nextPageButton && prevPageButton) {
-  nextPageButton.addEventListener('click', loadNextPage);
-  prevPageButton.addEventListener('click', loadPrevPage);
+  nextPageButton.addEventListener("click", loadNextPage);
+  prevPageButton.addEventListener("click", loadPrevPage);
 }

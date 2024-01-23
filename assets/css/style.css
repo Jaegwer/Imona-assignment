@@ -93,6 +93,13 @@ nav{
     }
 
     .container .row .col-lg-4 {
-        margin: 20px 0px;
+        margin: 40px 0px;
+    }
+}
+@media(min-width: 991.5px) {
+
+
+    .container .row .col-lg-4 {
+        margin: 40px 0px;
     }
 }
