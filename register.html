@@ -3,11 +3,11 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>User Data</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-	<link rel="stylesheet" href="./assets/css/user-style.css">
+	<link rel="stylesheet" href="./assets/css/register.css">
 </head>
 <body>
 	<div class="container">
@@ -16,15 +16,15 @@
 				<div class="card">
 					<div class="card-body">
 						<h5 class="card-title text-center">Register</h5>
-						<form onsubmit="submitForm(event)">
+						<form id="registerForm">
 							<div class="mb-3">
-							  <label for="exampleInputEmail1" class="form-label">Name</label>
-							  <input required id="nameInput" placeholder="Enter your name" type="text" class="form-control rounded-pill" id="exampleInputEmail1" aria-describedby="emailHelp">
+							  <label for="nameInput" class="form-label">Name*</label>
+							  <input  id="nameInput" placeholder="Enter your name" type="text" class="form-control rounded-pill" id="nameInput">
 
 							</div>
 							<div class="mb-3">
-							  <label for="exampleInputPassword1" class="form-label">Job</label>
-							  <input required id="jobInput" placeholder="Your profession" type="text" class="form-control rounded-pill" id="exampleInputPassword1">
+							  <label for="jobInput" class="form-label">Job*</label>
+							  <input  id="jobInput" placeholder="Your profession" type="text" class="form-control rounded-pill" id="jobInput">
 							</div>
 							<button  type="submit" class="btn btn-primary rounded-pill">Submit</button>
 						  </form>

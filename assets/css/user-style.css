@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 body {
     min-height: 100vh;
 	position: relative;
     background: linear-gradient(to bottom, #000428, #004683);
+	font-family: 'Poppins', sans-serif;
 }
 .detail-card{
 	background: linear-gradient(315deg, #4dff03, #00d0ff);
